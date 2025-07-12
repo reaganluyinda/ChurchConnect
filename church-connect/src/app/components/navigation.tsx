@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, User, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 function Navigation() {
@@ -12,11 +12,11 @@ function Navigation() {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
-    <nav className="my-4 relative z-50 px-4 md:px-12 lg:px-32">
+    <nav className="my-4 md:my-6 relative z-50 px-4 md:px-12 lg:px-32">
       <div className="flex   justify-between items-center ">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-gray-900 w-2/5">
-          ChurchConnect
+        <Link href="/" className="text-2xl font-bold text-cyan-950 w-2/5">
+          ChuCo
         </Link>
 
         {/* Desktop nav */}
@@ -24,9 +24,9 @@ function Navigation() {
           {/* Center: Find Church */}
           <div className="">
             <Link
-              href="/church"
-              className={`hover:text-blue-400 transition-colors text-xl  ${
-                pathname === "/church" ? "text-blue-800" : "text-gray-400"
+              href="/find-church"
+              className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                pathname === "/church" ? "text-blue-800" : "text-cyan-950"
               }`}
             >
               Find Church
@@ -37,17 +37,22 @@ function Navigation() {
           <div className="">
             <Link
               href="/signin"
-              className={`hover:text-blue-400 transition-colors text-xl ${
-                pathname === "/signin" ? "text-blue-800" : "text-gray-400"
+              className={`hover:text-blue-400 transition-colors flex items-center gap-2 cursor-pointer ${
+                pathname === "/signin" ? "text-blue-800" : "text-cyan-950"
               }`}
             >
+              <User />
               Sign in
             </Link>
           </div>
         </div>
 
         {/* Mobile menu button */}
-        <button className="sm:hidden" onClick={toggleMenu} aria-label="Menu">
+        <button
+          className="sm:hidden text-cyan-950"
+          onClick={toggleMenu}
+          aria-label="Menu"
+        >
           {menuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
@@ -60,10 +65,10 @@ function Navigation() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="sm:hidden flex flex-col gap-4 mt-4 bg-white shadow-md rounded-md p-4 font-semibold absolute z-50 top-full left-0 w-full"
+            className="sm:hidden flex flex-col gap-4 mt-4 bg-[#F8FAFC] shadow-md rounded-md p-4 font-semibold absolute z-50 top-full left-0 w-full"
           >
             <Link
-              href="/church"
+              href="/find-church"
               onClick={() => setMenuOpen(false)}
               className={`hover:text-[#33B3A9] transition-colors ${
                 pathname === "/church" ? "text-blue-800" : "text-gray-700"
