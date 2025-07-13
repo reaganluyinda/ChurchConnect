@@ -1,5 +1,7 @@
 "use client";
-import { Search } from "lucide-react";
+import { Button, Chip } from "@heroui/react";
+import { MapPin, Search, Users } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 function FindChurch() {
@@ -32,7 +34,7 @@ function FindChurch() {
     },
     {
       id: 3,
-      name: "Namirembe Cathedral Church",
+      name: "Namirembe Cathedral",
       denomination: "Anglican",
       location: "Namirembe",
       address: "Cathedral Hill Road",
@@ -56,7 +58,7 @@ function FindChurch() {
     },
     {
       id: 5,
-      name: "House of Prayer Ministries",
+      name: "Canan Land",
       denomination: "Born Again",
       location: "Makerere",
       address: "Makerere, Kikoni",
@@ -87,16 +89,78 @@ function FindChurch() {
       </div>
 
       {/* Search field */}
-      <div className="  max-w-md w-full mx-auto relative">
-        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+      <div className="  max-w-md w-full mx-auto relative py-8 px-4">
+        <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 h-7 w-7" />
         <input
           type="text"
           placeholder="Search by name, denomination or location..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10 h-12 pr-4 text-lg rounded-full w-full bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          className="pl-9 h-12 pr-4 text-lg rounded-full w-full bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
         />
       </div>
+
+      {/* Churches list */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        {filteredChurches.map((church) => (
+          <div
+            id="card"
+            key={church.id}
+            className=" border-0 shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 rounded-md"
+          >
+            <img
+              src={church.image}
+              alt={church.name}
+              className="w-full h-48 object-cover mb-4"
+            />
+
+            <div className="px-4">
+              <div id="Card header" className="pb-3">
+                <div className="flex justify-between items-start mb-2">
+                  <h1 className="text-xl text-cyan-950 leading-tight">
+                    {church.name}
+                  </h1>
+                  <Chip className="ml-2 flex-shrink-0">
+                    {church.denomination}
+                  </Chip>
+                </div>
+                <div className="flex items-center text-gray-500 text-sm mb-2">
+                  <MapPin className="h-4 w-4 mr-1" />
+                  {church.location}
+                </div>
+                <div className="text-gray-600">{church.description}</div>
+              </div>
+              {/*  card content */}
+              <div className=" flex items-center justify-between text-sm text-gray-500 mb-4">
+                <div className="flex items-center">
+                  <Users className="h-4 w-4 mr-1" />
+                  {church.memberCount} members
+                </div>
+                <div className="text-blue-600 font-medium">
+                  {church.ambassadorCount} ambassadors
+                </div>
+              </div>
+              <button className="w-full bg-cyan-950 text-white py-2 rounded-md mb-5">
+                <Link href="/ambassadors">Meet Ambassadors</Link>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      {filteredChurches.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-lg text-gray-500">
+            No Churches found matching your search
+          </p>
+          <Button
+            onClick={() => setSearchTerm("")}
+            className="mt-4"
+            variant="ghost"
+          >
+            Clear Search
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
