@@ -12,7 +12,7 @@ function Navigation() {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
-    <nav className="my-4 md:my-6 relative z-50 px-4 md:px-12 lg:px-32">
+    <nav className="py-4 md:py-6 relative z-50 px-4 md:px-12 lg:px-32 border-2 border-red-800">
       <div className="flex   justify-between items-center ">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-cyan-950 w-2/5">
