@@ -141,7 +141,7 @@ function FindChurch() {
                 </div>
               </div>
               <button className="w-full bg-cyan-950 text-white py-2 rounded-md mb-5">
-                <Link href="/ambassadors">Meet Ambassadors</Link>
+                <Link href={`/ambassadors/${church.id}`}>Meet Ambassadors</Link>
               </button>
             </div>
           </div>
