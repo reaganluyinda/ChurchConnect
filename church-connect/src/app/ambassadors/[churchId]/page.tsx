@@ -141,9 +141,9 @@ function Ambassadors() {
       {
         id: 10,
         name: "Jacob Tumusiime",
-        role: "Men’s Fellowship Leader",
+        role: "Men's Fellowship Leader",
         experience: "7 years",
-        specialties: ["Men’s Ministry", "Accountability Groups", "Counseling"],
+        specialties: ["Men's Ministry", "Accountability Groups", "Counseling"],
         bio: "Helping men grow spiritually and lead in their homes and communities is my mission.",
         rating: 4.8,
         responseTime: "Usually responds within 1 hour",
@@ -159,7 +159,7 @@ function Ambassadors() {
           "Choir Coordination",
           "Creative Arts",
         ],
-        bio: "Worship is a lifestyle, and I’m here to help you find your expression in Christ.",
+        bio: "Worship is a lifestyle, and I'm here to help you find your expression in Christ.",
         rating: 5.0,
         responseTime: "Usually responds within 45 minutes",
         isOnline: true,
@@ -244,7 +244,7 @@ function Ambassadors() {
               </div>
             </div>
 
-            <button className="w-full bg-cyan-950 text-white py-2 rounded-md mb-5">
+            <button className="w-full bg-cyan-950 text-white py-2 rounded-md mb-5  hover:bg-cyan-700 cursor-pointer">
               <Link
                 href={`/chat/${ambassador.id}`}
                 className="flex flex-row items-center justify-center"
