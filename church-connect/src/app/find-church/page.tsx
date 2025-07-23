@@ -140,7 +140,7 @@ function FindChurch() {
                   {church.ambassadorCount} ambassadors
                 </div>
               </div>
-              <button className="w-full bg-cyan-950 text-white py-2 rounded-md mb-5">
+              <button className="w-full bg-cyan-950 text-white py-2 rounded-md mb-5  hover:bg-cyan-700 cursor-pointer">
                 <Link href={`/ambassadors/${church.id}`}>Meet Ambassadors</Link>
               </button>
             </div>
