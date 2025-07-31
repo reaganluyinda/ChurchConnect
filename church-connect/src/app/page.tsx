@@ -34,7 +34,7 @@ function Home() {
     <div className="">
       {/* Hero section */}
       <div className="flex flex-col text-white items-center justify-center text-center gap-12 px-4 md:px-32 py-4 bg-[url('/hero.jpg')] bg-cover bg-center h-[80vh] w-full">
-        <h1 className="md:text-5xl text-4xl leading-tight">
+        <h1 className="md:text-6xl text-4xl font-bold leading-tight">
           Connect with your Local{" "}
           <span className="text-blue-600 block">Church Community</span>
         </h1>
