@@ -15,12 +15,12 @@ function Navigation() {
     <nav className="py-4 md:py-6 relative z-50 px-4 md:px-12 lg:px-32 ">
       <div className="flex   justify-between items-center ">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-cyan-950 w-2/5">
+        <Link href="/" className="text-2xl font-bold text-cyan-950 ">
           ChuCo
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden sm:flex flex-1 items-center justify-between font-semibold relative">
+        <div className="hidden sm:flex items-center justify-between font-semibold relative gap-36">
           {/* Center: Find Church */}
           <div className="">
             <Link
