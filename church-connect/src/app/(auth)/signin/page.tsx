@@ -1,12 +1,21 @@
+"use client";
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <form className=" p-8 shadow-xl rounded-lg">
+      {/* Sign In Form */}
+      <form className=" p-8 shadow-xl rounded-lg" onSubmit={handleSignIn}>
         <h2 className="text-3xl font-bold mb-4 text-center cursor-pointer text-cyan-950">
           ChuCo
         </h2>
@@ -36,6 +45,8 @@ function Signin() {
             name="email"
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="focus:outline-none border-[#DED2D9] border w-full rounded-md text-sm placeholder:text-muted-foreground px-3 py-2"
           />
@@ -49,6 +60,8 @@ function Signin() {
             name="password"
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
             className="focus:outline-none border-[#DED2D9] border w-full rounded-md text-sm placeholder:text-muted-foreground px-3 py-2"
           />

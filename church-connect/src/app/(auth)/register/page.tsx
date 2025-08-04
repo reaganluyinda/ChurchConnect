@@ -1,10 +1,24 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 function Register() {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <form className=" p-8 shadow-xl rounded-lg">
+      {/* register Form */}
+
+      <form className=" p-8 shadow-xl rounded-lg" onSubmit={handleSubmit}>
+        {/* Form Header */}
         <h2 className="text-3xl font-bold mb-4 text-center cursor-pointer text-cyan-950">
           ChuCo
         </h2>
@@ -14,6 +28,8 @@ function Register() {
         <p className="mb-6 text-center text-gray-500 text-sm">
           Create your Church Connect account
         </p>
+
+        {/* Form Inputs */}
         <div className="mb-4">
           <label className=" text-base font-medium mb-1">
             Email<span className="text-red-500">*</span>
@@ -22,6 +38,8 @@ function Register() {
             name="email"
             type="email"
             placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="px-3 py-2 focus:outline-none border-[#DED2D9] border w-full rounded-md text-sm placeholder:text-muted-foreground"
           />
@@ -34,6 +52,8 @@ function Register() {
             name="firstName"
             type="text"
             placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             required
             className="px-3 py-2 focus:outline-none border-[#DED2D9] border w-full rounded-md text-sm placeholder:text-muted-foreground"
           />
@@ -46,6 +66,8 @@ function Register() {
             name="lastName"
             placeholder="Last Name"
             type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required
             className="px-3 py-2 focus:outline-none border-[#DED2D9] border w-full rounded-md text-sm placeholder:text-muted-foreground"
           />
@@ -58,6 +80,8 @@ function Register() {
             name="password"
             type="password"
             placeholder="Create a password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
             className="px-3 py-2 focus:outline-none border-[#DED2D9] border w-full rounded-md text-sm placeholder:text-muted-foreground"
           />
@@ -71,6 +95,8 @@ function Register() {
             name="password"
             type="password"
             placeholder="Confirm password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
             className="px-3 py-2 focus:outline-none border-[#DED2D9] border w-full rounded-md text-sm placeholder:text-muted-foreground"
           />
