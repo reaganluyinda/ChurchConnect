@@ -70,7 +70,7 @@ function Navigation() {
             <Link
               href="/find-church"
               onClick={() => setMenuOpen(false)}
-              className={`hover:text-[#33B3A9] transition-colors ${
+              className={`hover:text-blue-400 transition-colors ${
                 pathname === "/church" ? "text-blue-800" : "text-gray-700"
               }`}
             >
@@ -79,7 +79,7 @@ function Navigation() {
             <Link
               href="/signin"
               onClick={() => setMenuOpen(false)}
-              className={`hover:text-[#33B3A9] transition-colors ${
+              className={`hover:text-blue-400 transition-colors ${
                 pathname === "/signin" ? "text-blue-800" : "text-gray-700"
               }`}
             >
