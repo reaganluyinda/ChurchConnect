@@ -4,10 +4,13 @@ import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { Menu, User, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import UserButton from "../components/userButton";
+import { SessionProvider, useSession } from "next-auth/react";
 
 function Navigation() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -34,16 +37,20 @@ function Navigation() {
           </div>
 
           {/* Right: Sign In */}
-          <div className="">
-            <Link
-              href="/signin"
-              className={`hover:text-blue-400 transition-colors flex items-center gap-2 cursor-pointer ${
-                pathname === "/signin" ? "text-blue-800" : "text-cyan-950"
-              }`}
-            >
-              <User />
-              Sign in
-            </Link>
+          <div>
+            {status === "loading" ? null : session ? (
+              <UserButton />
+            ) : (
+              <Link
+                href="/signin"
+                className={`hover:text-blue-400 transition-colors flex items-center gap-2 cursor-pointer ${
+                  pathname === "/signin" ? "text-blue-800" : "text-cyan-950"
+                }`}
+              >
+                <User />
+                Sign in
+              </Link>
+            )}
           </div>
         </div>
 
@@ -76,15 +83,19 @@ function Navigation() {
             >
               Find Church
             </Link>
-            <Link
-              href="/signin"
-              onClick={() => setMenuOpen(false)}
-              className={`hover:text-blue-400 transition-colors ${
-                pathname === "/signin" ? "text-blue-800" : "text-gray-700"
-              }`}
-            >
-              Sign in
-            </Link>
+            {status === "loading" ? null : session ? (
+              <UserButton />
+            ) : (
+              <Link
+                href="/signin"
+                onClick={() => setMenuOpen(false)}
+                className={`hover:text-blue-400 transition-colors ${
+                  pathname === "/signin" ? "text-blue-800" : "text-gray-700"
+                }`}
+              >
+                Sign in
+              </Link>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
