@@ -4,6 +4,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Spinner,
 } from "@heroui/react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -13,8 +14,13 @@ export const UserButton = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
+  if (status === "loading") {
+    return <Spinner />;
+  }
+
   const avatarFallback = session?.user?.firstName?.charAt(0).toUpperCase();
 
+  //signout handler
   const handleSignOut = async () => {
     await signOut({
       redirect: false,
@@ -26,17 +32,17 @@ export const UserButton = () => {
     <div>
       {session ? (
         <Dropdown placement="bottom-start">
-          <DropdownTrigger>
-            <div className="flex items-center gap-8">
+          <DropdownTrigger className="p-0 m-0 flex items-center gap-2 cursor-pointer">
+            <div className="flex items-center gap-2">
               <Avatar
                 as="button"
                 isBordered
                 src={session.user?.image || undefined}
                 showFallback
                 name={avatarFallback}
-                className="transition-transform hover:opacity-75"
+                className="transition-transform hover:opacity-75 focus:outline-none focus:ring-0"
               />
-              <span>{session.user?.name}</span>
+              <span className="text-cyan-950">{session.user?.name}</span>
             </div>
           </DropdownTrigger>
           <DropdownMenu aria-label="User Actions" variant="flat">
