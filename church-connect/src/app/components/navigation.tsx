@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Menu, User, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import UserButton from "../components/userButton";
-import { SessionProvider, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 function Navigation() {
   const pathname = usePathname();
