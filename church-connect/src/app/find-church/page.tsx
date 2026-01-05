@@ -91,13 +91,13 @@ function FindChurch() {
 
       {/* Search field */}
       <div className="  max-w-md w-full mx-auto relative py-8 px-4">
-        <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 h-6 w-6" />
+        <Search className="absolute left-8 top-1/2 transform -translate-y-1/2 text-gray-400 h-6 w-6" />
         <input
           type="text"
           placeholder="Search by name, denomination or location..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-16 h-12 pr-8 text-normal rounded-full w-full bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          className="pl-12 h-12 pr-8 text-normal rounded-full w-full bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
         />
       </div>
 
@@ -112,7 +112,9 @@ function FindChurch() {
             <Image
               src={church.image}
               alt={church.name}
-              className="w-full h-48 object-cover mb-4"
+              width={500}
+              height={192}
+              className=" object-cover mb-4"
             />
 
             <div className="px-4">
